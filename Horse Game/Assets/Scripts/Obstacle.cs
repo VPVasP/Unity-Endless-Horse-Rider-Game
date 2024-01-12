@@ -40,7 +40,10 @@ public class Obstacle : MonoBehaviour
                 {
                     //we play the cheer sound and add the curentobstacle number 
                     GameManager.instance.PlayCheerSound();
-                    ObstacleManager.instance.currentObstacleNumber += 1;
+                    ObstacleManager.instance.currentObstacleNumber += 0.5f;
+
+                    ObstacleManager.instance.obstaclesPassedText.text = "Obstacles ";
+                    ObstacleManager.instance.obstaclesPassedText.text += ObstacleManager.instance.currentObstacleNumber.ToString();
                     hasNumberBeenAdded = true;
                     Destroy(gameObject, 0.5f);
                 }
