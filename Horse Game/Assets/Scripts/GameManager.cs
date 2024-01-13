@@ -6,13 +6,17 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    [SerializeField] private GameObject lostPanel; //panel when we lose
+    [SerializeField] private GameObject deathPanel; //panel when we lose
     private AudioSource aud;
     public AudioSource mainMusic;
     [SerializeField] private AudioClip cheer;
     private void Awake()
     {
         instance = this;
+    }
+    private void OnEnable()
+    {
+        
     }
     private void Start()
     {
@@ -25,13 +29,15 @@ public class GameManager : MonoBehaviour
         aud.playOnAwake = false;
         aud.loop = false;
         aud.volume = 0.3f;
-        lostPanel.SetActive(false);
+        deathPanel.SetActive(false);
     }
     //we enable our lose panel
-   public void LostPanel()
+   public void DeathPanelActivation()
     {
-        lostPanel.SetActive(true);
-
+        deathPanel.SetActive(true);
+        ObstacleManager.instance.obstaclesPassedText.gameObject.SetActive(false);
+        StopCheerSound();
+        mainMusic.Stop();
     }
     //we play the cheer audioclip and set the volume for both the clip and the mainmusic
     public void PlayCheerSound()
@@ -53,4 +59,6 @@ public class GameManager : MonoBehaviour
       Scene scene = SceneManager.GetActiveScene();
       SceneManager.LoadScene(scene.name);
     }
+  
+ 
 }

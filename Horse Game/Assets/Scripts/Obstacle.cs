@@ -22,7 +22,7 @@ public class Obstacle : MonoBehaviour
             //we trigger the horse death and we call the lost panel function from the game manager
             collision.gameObject.GetComponent<HorseController>().Dead();
             collision.gameObject.GetComponent<HorseController>().enabled = false;
-            GameManager.instance.LostPanel();
+            GameManager.instance.DeathPanelActivation();
         }
     }
     private void Update()
@@ -42,8 +42,8 @@ public class Obstacle : MonoBehaviour
                     GameManager.instance.PlayCheerSound();
                     ObstacleManager.instance.currentObstacleNumber += 0.5f;
 
-                    ObstacleManager.instance.obstaclesPassedText.text = "Obstacles ";
-                    ObstacleManager.instance.obstaclesPassedText.text += ObstacleManager.instance.currentObstacleNumber.ToString();
+                    ObstacleManager.instance.obstaclesPassedText.text = "Obstacles Passed: ";
+                    ObstacleManager.instance.obstaclesPassedText.text +=ObstacleManager.instance.currentObstacleNumber.ToString();
                     hasNumberBeenAdded = true;
                     Destroy(gameObject, 0.5f);
                 }

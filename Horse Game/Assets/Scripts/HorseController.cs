@@ -5,6 +5,7 @@ using UnityEngine;
 public class HorseController : MonoBehaviour
 {
     //our speed parameters 
+    [Header("Parameters")]
     [SerializeField] private float speed;
     [SerializeField] private float jumpSpeed;
     [SerializeField] private float jumpForwardSpeed;
@@ -16,8 +17,14 @@ public class HorseController : MonoBehaviour
     private Animator anim;
     private AudioSource aud;
     //our audioclips
+    [Header("Audio Clips")]
     [SerializeField] private AudioClip jumpClip;
     [SerializeField] private AudioClip deathClip;
+    private void OnEnable()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
     private void Start()
     {
         //we asssing our components
@@ -73,5 +80,7 @@ public class HorseController : MonoBehaviour
     {
         aud.clip = deathClip;
         aud.Play();
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }
