@@ -11,7 +11,7 @@ public class ObstacleManager : MonoBehaviour
     [SerializeField] private List<GameObject> spawnedObstacles = new List<GameObject>(); //our list for spawned obstac;es
     [SerializeField]  private bool obstaclesSpawned = false;
     [SerializeField] private GameObject ground;
-     public TextMeshProUGUI obstaclesPassedText;
+    public TextMeshProUGUI obstaclesPassedText;
     private void Awake()
     {
         instance = this;
